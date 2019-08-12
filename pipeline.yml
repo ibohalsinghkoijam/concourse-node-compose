@@ -6,14 +6,10 @@ resources:
     repository: node
     tag: '11'
 
-# - name: dockerrepo 
-#   type: docker-image
-#   source:
-#     repository: ibohal1802/helloworld-k8s
 - name: gitrepo
   type: git
   source:
-    uri: https://github.com/ibohalsinghkoijam/concourse-kubernetes-k8s.git
+    uri: https://github.com/ibohalsinghkoijam/concourse-node-compose.git
     branch: master
     
 jobs:
