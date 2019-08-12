@@ -4,7 +4,7 @@ resources:
   type: docker-image
   source:
     repository: node
-    tag: '11'
+    tag: '11-alpine'
 
 - name: gitrepo
   type: git
