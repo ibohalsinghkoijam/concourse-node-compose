@@ -38,9 +38,9 @@ jobs:
           source /docker-lib.sh
           start_docker
 
-          docker load -i node/image
-          docker tag "$(cat node/image-id)" "$(cat node/repository):$(cat node/tag)"
-          docker images
+          # docker load -i node/image
+          # docker tag "$(cat node/image-id)" "$(cat node/repository):$(cat node/tag)"
+          # docker images
 
           cd gitrepo
           docker-compose up -d
