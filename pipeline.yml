@@ -26,7 +26,7 @@ jobs:
       image_resource:
         type: docker-image
         source:
-          repository: making/dcind-jdk
+          repository: amidos/dcind
       inputs:
       - name: gitrepo
       - name: node
