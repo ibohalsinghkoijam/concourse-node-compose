@@ -3,8 +3,8 @@ services:
   api:
     image: sample-express-app
     build: .
-    networks:
-      - backend
+    # networks:
+    #   - backend
     ports:
       - "3000:3000"
     volumes:
@@ -12,10 +12,10 @@ services:
 
   web-cli:
     image: sample-express-app
-    networks:
-      - backend
+    # networks:
+    #   - backend
     command: sh
 
-networks:
-  backend:
-    driver: bridge
+# networks:
+#   backend:
+#     driver: bridge
