@@ -1,0 +1,47 @@
+---
+resources:
+- name: node
+  type: docker-image
+  source:
+    repository: node
+    tag: '11'
+
+# - name: dockerrepo 
+#   type: docker-image
+#   source:
+#     repository: ibohal1802/helloworld-k8s
+- name: gitrepo
+  type: git
+  source:
+    uri: https://github.com/ibohalsinghkoijam/concourse-kubernetes-k8s.git
+    branch: master
+    
+jobs:
+- name: integration-test
+  plan:
+  - aggregate:
+    - get: gitrepo
+    - get: node
+      params: {save: true}
+  - task: run-test
+    privileged: true
+    config:
+      platform: linux
+      image_resource:
+        type: docker-image
+        source:
+          repository: making/dcind-jdk
+      inputs:
+      - name: gitrepo
+      - name: node
+      run:
+        path: sh
+        args: 
+        - -c
+        - |
+          source /docker-lib.sh
+          start_docker
+
+          cd gitrepo
+          docker-compose up -d
+          # docker-compose down
